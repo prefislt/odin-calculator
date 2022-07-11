@@ -65,14 +65,17 @@ buttons.addEventListener("click", () => {
         operator = undefined;
         equalMode = true;
     } else if (operator != undefined) {
-        mainValue = Number(mainDisplay.innerText);
-        infoValue = Number(infoDisplay.innerText.slice(0, -2));
-        mainDisplay.innerText = "";
-        infoDisplay.innerText = operate(operator,infoValue,mainValue)+" "+input;
-        operator = input;
+        if (equalMode == false) {
+            mainValue = Number(mainDisplay.innerText);
+            infoValue = Number(infoDisplay.innerText.slice(0, -2));
+            mainDisplay.innerText = "";
+            infoDisplay.innerText = operate(operator,infoValue,mainValue)+" "+input;
+            operator = input;
+        } else { return; }
     } else {
         infoDisplay.innerText = mainDisplay.innerText+" "+input;
         mainDisplay.innerText = "";
         operator = input;
+        equalMode = true;
     }
 })
