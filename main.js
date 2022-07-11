@@ -1,8 +1,10 @@
 
-const display = document.querySelector(".display");
+const mainDisplay = document.querySelector(".mainDisplay");
+const infoDisplay = document.querySelector(".infoDisplay");
 const buttons = document.querySelector(".buttons");
 
-let input = "";
+let infoValue, mainValue, input, operator;
+let equalMode = false;
 
 // Basic math functions
 const add = (a,b) => a+b;
@@ -16,7 +18,7 @@ const operate = (operator,a,b) => {
             return add(a,b);
         case "-":
             return subtract(a,b);
-        case "*":
+        case "x":
             return multiply(a,b);
         case "/":
             return divide(a,b);
@@ -25,7 +27,7 @@ const operate = (operator,a,b) => {
     }
 }
 
-const listenToButtons = () => {
+const button = () => {
     buttons.addEventListener("click", (e) => {
         if (e.target.matches("button")) {
             input = e.target.innerText;
@@ -33,17 +35,57 @@ const listenToButtons = () => {
     })
 }
 
-const addToDisplay = (input) => {
-    display.innerText += input;
+const updateMainDisplay = (input) => {
+    mainDisplay.innerText = input;
 }
 
-listenToButtons();
+const updateInfoDisplay = (input) => {
+    infoDisplay.innerText = input;
+}
+
+const addToMainDisplay = (input) => {
+    mainDisplay.innerText += input;
+}
+
+button();
 
 buttons.addEventListener("click", () => {
-    if (input == "C") {
-        display.innerHTML = "";
+
+    if (input == "AC") {
+        mainDisplay.innerText = "";
+        infoDisplay.innerText = "";
+        infoValue = "";
+        mainValue = "";
+        operator = undefined;
+        equalMode = false;
+    } else if (equalMode == true && input == "=") {
+        return;
+    } else if (equalMode == true && Number(input) >= 0) {
+        equalMode = false;
+        mainDisplay.innerText = "";
+        addToMainDisplay(input);
+    } else if (Number(input) >= 0) {
+        addToMainDisplay(input);
+    } else if (input == "=") {
+        mainValue = Number(mainDisplay.innerText);
+        infoValue = Number(infoDisplay.innerText.slice(0, -2));
+        console.log(infoValue);
+        console.log(mainValue);
+        mainDisplay.innerText = operate(operator,infoValue,mainValue);
+        infoDisplay.innerText = "";
+        operator = undefined;
+        equalMode = true;
+    } else if (operator != undefined) {
+        mainValue = Number(mainDisplay.innerText);
+        infoValue = Number(infoDisplay.innerText.slice(0, -2));
+        console.log(infoValue);
+        console.log(mainValue);
+        mainDisplay.innerText = "";
+        infoDisplay.innerText = operate(operator,infoValue,mainValue)+" "+input;
+        operator = input;
     } else {
-        addToDisplay(input);
+        infoDisplay.innerText = mainDisplay.innerText+" "+input;
+        mainDisplay.innerText = "";
+        operator = input;
     }
 })
-

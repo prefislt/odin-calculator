@@ -26,15 +26,37 @@ body {
 
         .display {
             display: flex;
+            flex-direction: column;
             width: 100%;
             height: 150px;
-            padding: 0 20px 0 20px;
-            font-weight: 700;
-            font-size: 30pt;
             background-color: white;
             justify-content: right;
             align-items: center;
             box-sizing: border-box;
+
+            .infoDisplay {
+                display: flex;
+                justify-content: right;
+                align-items: center;
+                padding-right: 20px;
+                background-color: rgb(218, 218, 218);
+                width: 100%;
+                height: 50px;
+                box-sizing: border-box;
+            }
+
+            .mainDisplay {
+                display: flex;
+                justify-content: right;
+                align-items: center;
+                width: 100%;
+                height: 100px;
+                padding: 0 20px 0 20px;
+                font-weight: 700;
+                font-size: 30pt;
+                box-sizing: border-box;
+            }
+
         }
 
         .buttons {
