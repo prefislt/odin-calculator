@@ -30,7 +30,9 @@ const button = () => {
 }
 
 const addToMainDisplay = (input) => {
-    mainDisplay.innerText += input;
+    if (mainDisplay.innerText.length < 10) {
+        mainDisplay.innerText += input;
+    } else { return; }
 }
 
 button();
