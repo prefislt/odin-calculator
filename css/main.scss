@@ -8,3 +8,47 @@
 body {
     font-family: 'Poppins', sans-serif;
 }
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .calculator {
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(170, 170, 170);
+        width: 500px;
+        height: 600px;
+        padding: 20px;
+        box-sizing: border-box;
+
+        .display {
+            display: flex;
+            width: 100%;
+            height: 100px;
+            padding: 20px;
+            font-weight: 700;
+            font-size: 30pt;
+            background-color: white;
+            justify-content: right;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            height: 100%;
+
+            button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 30pt;
+            }
+        }
+    }
+}
