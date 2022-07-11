@@ -35,14 +35,6 @@ const button = () => {
     })
 }
 
-const updateMainDisplay = (input) => {
-    mainDisplay.innerText = input;
-}
-
-const updateInfoDisplay = (input) => {
-    infoDisplay.innerText = input;
-}
-
 const addToMainDisplay = (input) => {
     mainDisplay.innerText += input;
 }
