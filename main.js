@@ -58,6 +58,9 @@ buttons.addEventListener("click", () => {
         mainValue = "";
         operator = undefined;
         equalMode = false;
+    } else if (input == "=" && infoDisplay.innerText == "" && equalMode == false) {
+        equalMode == true;
+        return;
     } else if (equalMode == true && input == "=") {
         return;
     } else if (equalMode == true && Number(input) >= 0) {
