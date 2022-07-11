@@ -1,4 +1,7 @@
 
+const display = document.querySelector(".display");
+const buttons = document.querySelector(".buttons");
+
 let input = "";
 
 // Basic math functions
@@ -23,8 +26,6 @@ const operate = (operator,a,b) => {
 }
 
 const listenToButtons = () => {
-    const buttons = document.querySelector(".buttons");
-
     buttons.addEventListener("click", (e) => {
         if (e.target.matches("button")) {
             input = e.target.innerText;
@@ -33,14 +34,16 @@ const listenToButtons = () => {
 }
 
 const addToDisplay = (input) => {
-    const display = document.querySelector(".display");
-
     display.innerText += input;
 }
 
 listenToButtons();
 
-document.querySelector(".buttons").addEventListener("click", () => {
-    addToDisplay(input);
+buttons.addEventListener("click", () => {
+    if (input == "C") {
+        display.innerHTML = "";
+    } else {
+        addToDisplay(input);
+    }
 })
 
