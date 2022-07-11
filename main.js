@@ -60,7 +60,10 @@ buttons.addEventListener("click", () => {
     } else if (input == "=") {
         mainValue = Number(mainDisplay.innerText);
         infoValue = Number(infoDisplay.innerText.slice(0, -2));
-        mainDisplay.innerText = operate(operator,infoValue,mainValue).toFixed(2);
+        let sum = operate(operator,infoValue,mainValue);
+        if (sum%1 == 0) {
+            mainDisplay.innerText = sum;
+        } else { mainDisplay.innerText = sum.toFixed(2); }
         infoDisplay.innerText = "";
         operator = undefined;
         equalMode = true;
@@ -69,7 +72,10 @@ buttons.addEventListener("click", () => {
             mainValue = Number(mainDisplay.innerText);
             infoValue = Number(infoDisplay.innerText.slice(0, -2));
             mainDisplay.innerText = "";
-            infoDisplay.innerText = operate(operator,infoValue,mainValue).toFixed(2)+" "+input;
+            let sum = operate(operator,infoValue,mainValue);
+            if (sum%1 == 0) {
+                infoDisplay.innerText = sum+" "+input;
+            } else { infoDisplay.innerText = sum.toFixed(2)+" "+input; }
             operator = input;
         } else { return; }
     } else {
