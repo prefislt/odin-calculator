@@ -6,22 +6,16 @@ const buttons = document.querySelector(".buttons");
 let infoValue, mainValue, input, operator;
 let equalMode = false;
 
-// Basic math functions
-const add = (a,b) => a+b;
-const subtract = (a,b) => a-b;
-const multiply = (a,b) => a*b;
-const divide = (a,b) => a/b;
-
 const operate = (operator,a,b) => {
     switch (operator) {
         case "+":
-            return add(a,b);
+            return a+b;
         case "-":
-            return subtract(a,b);
+            return a-b;
         case "x":
-            return multiply(a,b);
+            return a*b;
         case "/":
-            return divide(a,b);
+            return a/b;
         default:
             return console.log("ERROR! OPERATOR NOT FOUND");
     }
