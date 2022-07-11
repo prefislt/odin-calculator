@@ -69,8 +69,6 @@ buttons.addEventListener("click", () => {
     } else if (input == "=") {
         mainValue = Number(mainDisplay.innerText);
         infoValue = Number(infoDisplay.innerText.slice(0, -2));
-        console.log(infoValue);
-        console.log(mainValue);
         mainDisplay.innerText = operate(operator,infoValue,mainValue);
         infoDisplay.innerText = "";
         operator = undefined;
@@ -78,8 +76,6 @@ buttons.addEventListener("click", () => {
     } else if (operator != undefined) {
         mainValue = Number(mainDisplay.innerText);
         infoValue = Number(infoDisplay.innerText.slice(0, -2));
-        console.log(infoValue);
-        console.log(mainValue);
         mainDisplay.innerText = "";
         infoDisplay.innerText = operate(operator,infoValue,mainValue)+" "+input;
         operator = input;
