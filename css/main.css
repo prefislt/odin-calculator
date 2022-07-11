@@ -59,10 +59,23 @@ body {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
   height: 100%;
+  background-color: white;
 }
 .container .calculator .buttons button {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 30pt;
+  background-color: rgb(80, 80, 80);
+  color: white;
+  border: 1px solid;
+  transition: 0.1s ease-in-out;
+  cursor: pointer;
+}
+.container .calculator .buttons button:hover {
+  background-color: rgb(50, 50, 50);
+}
+.container .calculator .buttons button:active {
+  background-color: rgb(80, 80, 80);
+  transform: scale(0.95);
 }/*# sourceMappingURL=main.css.map */

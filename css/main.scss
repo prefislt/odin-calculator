@@ -64,13 +64,29 @@ body {
             grid-template-columns: repeat(4, 1fr);
             grid-template-rows: repeat(4, 1fr);
             height: 100%;
+            background-color: white;
 
             button {
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 font-size: 30pt;
+                background-color: rgb(80, 80, 80);
+                color: white;
+                border: 1px solid;
+                transition: 0.1s ease-in-out;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: rgb(50, 50, 50);
+                }
+
+                &:active {
+                    background-color: rgb(80, 80, 80);
+                    transform: scale(0.95);
+                }
             }
+
         }
     }
 }
