@@ -60,6 +60,15 @@ buttons.addEventListener("click", () => {
     } else if (input == "=") {
         mainValue = Number(mainDisplay.innerText);
         infoValue = Number(infoDisplay.innerText.slice(0, -2));
+
+        if ((operator == "/" && infoValue == 0) || (operator == "/" && mainValue == 0)) {
+            mainDisplay.innerText = "LOL";
+            infoDisplay.innerText = "";
+            operator = undefined;
+            equalMode = true;
+            return;
+        }
+
         let sum = operate(operator,infoValue,mainValue);
         if (sum%1 == 0) {
             mainDisplay.innerText = sum;
@@ -72,6 +81,13 @@ buttons.addEventListener("click", () => {
             mainValue = Number(mainDisplay.innerText);
             infoValue = Number(infoDisplay.innerText.slice(0, -2));
             mainDisplay.innerText = "";
+            if ((operator == "/" && infoValue == 0) || (operator == "/" && mainValue == 0)) {
+                infoDisplay.innerText = "";
+                mainDisplay.innerText = "LOL";
+                operator = undefined;
+                equalMode = true;
+                return;
+            }
             let sum = operate(operator,infoValue,mainValue);
             if (sum%1 == 0) {
                 infoDisplay.innerText = sum+" "+input;
